@@ -21,9 +21,26 @@
 				echo '<script>history.back();</script>';
 			}
 			else{
-				$q = "update test set day=now()+INTERVAL 6 HOUR ,e_flag=1 where seat_no='$seat_number'";
+				$q="select * from test where stu_no = 201111756";
+				$result = $db -> query($q);
+				$row = $result -> fetch_assoc();
+				$now_r = (strtotime($row['day']) + 21600);
+				$now_dr = date('Y-m-d H:i:s',$now_r);
+				$now_t = date('Y-m-d H:i:s');
+				$now_dr = new DateTime($now_dr);
+				$now_t = new DateTime($now_t);
+				$diff = date_diff($now_dr,$now_t);
+				$h = $diff ->h;
+				if($h < 1){ 
+				$q = "update test set day=now(),e_flag=1 where seat_no='$seat_number'";
 				$r = $db->query($q);
 				echo '<script>alert("Finish!!")</script>';
-				echo '<script>history.back();</script>';		
-			}		
+				echo '<script>history.back();</script>';
+				}
+	
+				else{
+				echo '<script>alert("You have lot of time")</script>';
+				echo '<script>history.back();</script>';
+				}		
+	}
 }

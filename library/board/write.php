@@ -19,6 +19,12 @@ require_once("../config.php");
 	<title>자유게시판 | Kurien's Library</title>
 	<link rel="stylesheet" href="./css/normalize.css" />
 	<link rel="stylesheet" href="./css/board.css" />
+	<style>
+		body{
+			display: table; margin-left: auto; margin-right: auto;margin-top: auto;margin-bottom: auto;
+      padding-top: 50px
+		}
+	</style>
 </head>
 <body>
 	<article class="boardArticle">
